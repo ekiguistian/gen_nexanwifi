@@ -1,31 +1,31 @@
 <?php
-/*
- *  Copyright (C) 2018 Laksamadi Guko.
- *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 session_start();
-// hide all error
+
 error_reporting(0);
 if (!isset($_SESSION["mikhmon"])) {
   header("Location:../admin.php?id=login");
 } else {
-// load session MikroTik
+
 $session = $_GET['session'];
 
 
-// load config
+
   include('../include/config.php');
   include('../include/readcfg.php');
 
@@ -36,12 +36,12 @@ $thisY = substr($idbl,-4);
 $ms = array(1 => "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec");
 $mn = array_search($thisM, $ms);
 
-// https://secure.php.net/manual/en/function.cal-days-in-month.php#38666
-function days_in_month($month, $year) 
-{ 
-// calculate number of days in a month 
-return $month == 2 ? ($year % 4 ? 28 : ($year % 100 ? 29 : ($year % 400 ? 28 : 29))) : (($month - 1) % 7 % 2 ? 30 : 31); 
-} 
+
+function days_in_month($month, $year)
+{
+
+return $month == 2 ? ($year % 4 ? 28 : ($year % 100 ? 29 : ($year % 400 ? 28 : 29))) : (($month - 1) % 7 % 2 ? 30 : 31);
+}
 
 
 if ($mn == date("n")){
@@ -76,7 +76,7 @@ if ($currency == in_array($currency, $cekindo['indo'])) {
 
           <div class="card">
             <div class="card-header"><h3><i class="fa fa-area-chart"></i> Resume Report </h3></div>
-          
+
               <div class="card-body">
                 <div class="row">
 
@@ -116,7 +116,7 @@ Highcharts.chart('container', {
         verticalAlign: 'bottom'
     },
 
-    
+
     plotOptions: {
         series: {
             label: {
@@ -169,4 +169,4 @@ for ($i = 1; $i < $totD; $i++) {
 
 </script>
                 </div>
-              </div>  
+              </div>

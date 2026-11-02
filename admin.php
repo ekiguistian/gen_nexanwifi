@@ -1,30 +1,30 @@
 <?php
-/*
- *  Copyright (C) 2018 Laksamadi Guko.
- *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 session_start();
-// hide all error
+
 error_reporting(0);
 
 ob_start("ob_gzhandler");
 
-// check url
+
 $url = $_SERVER['REQUEST_URI'];
 
-// load session MikroTik
+
 $session = $_GET['session'];
 $id = $_GET['id'];
 $c = $_GET['c'];
@@ -37,15 +37,15 @@ $ids = array(
   "settings",
 );
 
-// lang
+
 include('./lang/isocodelang.php');
 include('./include/lang.php');
 include('./lang/'.$langid.'.php');
 
-// quick bt
+
 include('./include/quickbt.php');
 
-// theme
+
 include('./include/theme.php');
 include('./settings/settheme.php');
 include('./settings/setlang.php');
@@ -58,7 +58,7 @@ if ($_SESSION['theme'] == "") {
 }
 
 
-// load config
+
 include_once('./include/headhtml.php');
 include('./include/config.php');
 include('./include/readcfg.php');
@@ -66,7 +66,7 @@ include('./include/readcfg.php');
 include_once('./lib/routeros_api.class.php');
 include_once('./lib/formatbytesbites.php');
 ?>
-    
+
 <?php
 if ($id == "login" || substr($url, -1) == "p") {
 
@@ -77,12 +77,12 @@ if ($id == "login" || substr($url, -1) == "p") {
       $_SESSION["mikhmon"] = $user;
 
         echo "<script>window.location='./admin.php?id=sessions'</script>";
-    
+
     } else {
       $error = '<div style="width: 100%; padding:5px 0px 5px 0px; border-radius:5px;" class="bg-danger"><i class="fa fa-ban"></i> Alert!<br>Invalid username or password.</div>';
     }
   }
-  
+
 
   include_once('./include/login.php');
 } elseif (!isset($_SESSION["mikhmon"])) {
@@ -94,14 +94,14 @@ if ($id == "login" || substr($url, -1) == "p") {
   $_SESSION["connect"] = "";
   include_once('./include/menu.php');
   include_once('./settings/sessions.php');
-  /*echo '
-  <script type="text/javascript">
-    document.getElementById("sessname").onkeypress = function(e) {
-    var chr = String.fromCharCode(e.which);
-    if (" _!@#$%^&*()+=;|?,~".indexOf(chr) >= 0)
-        return false;
-    };
-    </script>';*/
+
+
+
+
+
+
+
+
 } elseif ($id == "settings" && !empty($session) || $id == "settings" && !empty($router)) {
   include_once('./include/menu.php');
   include_once('./settings/settings.php');
@@ -114,7 +114,7 @@ if ($id == "login" || substr($url, -1) == "p") {
     };
     </script>';
 } elseif ($id == "connect"  && !empty($session)) {
-  ini_set("max_execution_time",5);  
+  ini_set("max_execution_time",5);
   include_once('./include/menu.php');
   $API = new RouterosAPI();
   $API->debug = false;
@@ -182,4 +182,3 @@ if ($id == "login" || substr($url, -1) == "p") {
 <?php include('./include/info.php'); ?>
 </body>
 </html>
-

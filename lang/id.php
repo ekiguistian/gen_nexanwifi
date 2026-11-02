@@ -1,5 +1,5 @@
 <?php
-$langid="id"; 
+$langid="id";
 $langname = "Indonesia";
 $language = "Bahasa";
 
@@ -153,7 +153,7 @@ $_yes = "Ya";
 
 
 
-//details
+
 $_format_time_limit = '
     Format '.$_time_limit.'.<br>
     [wdhm] Contoh : 30d = 30'.$_days.', 12h = 12'.$_hours.', 4w3d = 31'.$_days.'.

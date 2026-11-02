@@ -1,22 +1,22 @@
 <?php
-/*
- *  Copyright (C) 2018 Laksamadi Guko.
- *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 session_start();
-// hide all error
+
 error_reporting(0);
 if (!isset($_SESSION["mikhmon"])) {
   header("Location:../admin.php?id=login");
@@ -51,9 +51,9 @@ if (!isset($_SESSION["mikhmon"])) {
     }else{
       $usermode = "up-";
     }
-    
+
       $comment = $usermode.$comment;
-    
+
     $API->comm("/ip/hotspot/user/add", array(
       "server" => "$server",
       "name" => "$name",
@@ -85,10 +85,10 @@ if (!isset($_SESSION["mikhmon"])) {
 <div class="col-8">
 <div class="card box-bordered">
   <div class="card-header">
-  <h3><i class="fa fa-user-plus"></i> <?= $_add_user ?> <small id="loader" style="display: none;" ><i><i class='fa fa-circle-o-notch fa-spin'></i> <?= $_processing ?> </i></small></h3> 
+  <h3><i class="fa fa-user-plus"></i> <?= $_add_user ?> <small id="loader" style="display: none;" ><i><i class='fa fa-circle-o-notch fa-spin'></i> <?= $_processing ?> </i></small></h3>
   </div>
   <div class="card-body">
-<form autocomplete="off" method="post" action="">  
+<form autocomplete="off" method="post" action="">
   <div>
   <?php if ($_SESSION['ubp'] != "") {
     echo "    <a class='btn bg-warning' href='./?hotspot=users&profile=" . $_SESSION['ubp'] . "&session=" . $session . "'> <i class='fa fa-close'></i> ".$_close."</a>";
@@ -196,6 +196,6 @@ if (!isset($_SESSION["mikhmon"])) {
 function GetVP(){
   var prof = document.getElementById('uprof').value;
   $("#GetValidPrice").load("./process/getvalidprice.php?name="+prof+"&session=<?= $session; ?> #getdata");
-}  
+}
 </script>
 </div>

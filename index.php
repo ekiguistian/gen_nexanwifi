@@ -1,31 +1,31 @@
 <?php
-/*
- *  Copyright (C) 2018 Laksamadi Guko.
- *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 session_start();
-// hide all error
+
 error_reporting(0);
-// check url
+
 
 ob_start("ob_gzhandler");
 
 
 $url = $_SERVER['REQUEST_URI'];
 
-// load session MikroTik
+
 
 $session = $_GET['session'];
 
@@ -39,21 +39,21 @@ if (!isset($_SESSION["mikhmon"])) {
 
   $_SESSION["connect"] = "";
 
-// time zone
+
   date_default_timezone_set($_SESSION['timezone']);
 
-// lang
+
   include('./include/lang.php');
   include('./lang/'.$langid.'.php');
 
-// quick bt
+
   include('./include/quickbt.php');
 
-// load config
+
   include('./include/config.php');
   include('./include/readcfg.php');
 
-// theme  
+
   include('./include/theme.php');
   include('./settings/settheme.php');
   if ($_SESSION['theme'] == "") {
@@ -64,7 +64,7 @@ if (!isset($_SESSION["mikhmon"])) {
     $themecolor = $_SESSION['themecolor'];
   }
 
-// routeros api
+
   include_once('./lib/routeros_api.class.php');
   include_once('./lib/formatbytesbites.php');
   $API = new RouterosAPI();
@@ -73,9 +73,9 @@ if (!isset($_SESSION["mikhmon"])) {
 
   $getidentity = $API->comm("/system/identity/print");
   $identity = $getidentity[0]['name'];
-  
 
-// get variable
+
+
   $hotspot = $_GET['hotspot'];
   $hotspotuser = $_GET['hotspot-user'];
   $userbyname = $_GET['hotspot-user'];
@@ -134,7 +134,7 @@ if (!isset($_SESSION["mikhmon"])) {
 </script>';
 
 
-// logout
+
   if ($hotspot == "logout") {
     echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Logout...</b>";
 
@@ -142,49 +142,49 @@ if (!isset($_SESSION["mikhmon"])) {
     echo "<script>sessionStorage.clear();</script>";
     echo "<script>window.location='./admin.php?id=login'</script>";
   }
-// redirect to home
+
   elseif (substr(explode("=", $url)[0],-9) == "/?session") {
 
     include_once('./dashboard/home.php');
     $_SESSION['ubn'] = "";
   }
 
-// redirect to home
+
   elseif ($hotspot == "dashboard") {
     include_once('./dashboard/home.php');
     $_SESSION['ubn'] = "";
 
   }
 
-// hotspot log
+
   elseif ($hotspot == "log") {
     include_once('./hotspot/log.php');
   }
 
-// hotspot log
+
   elseif ($report == "userlog") {
     include_once('./report/userlog.php');
   }
 
-// about
+
   elseif ($hotspot == "about") {
     include_once('./include/about.php');
   }
 
-// bad request
+
   elseif (substr($url, -1) == "=") {
     echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Bad request! redirect to Home......</b>";
 
     echo "<script>window.location='./'</script>";
   }
 
-// hotspot add users
+
   elseif ($hotspot == "add-user") {
     $_SESSION['hua'] = "";
     include_once('./hotspot/adduser.php');
   }
 
-// hotspot users
+
   elseif ($hotspot == "users" && $prof == "all") {
     $_SESSION['ubp'] = "";
     $_SESSION['hua'] = "";
@@ -193,7 +193,7 @@ if (!isset($_SESSION["mikhmon"])) {
     include_once('./hotspot/users.php');
   }
 
-// hotspot users filter by profile
+
   elseif ($hotspot == "users" && $prof != "") {
     $_SESSION['ubp'] = $prof;
     $_SESSION['hua'] = "";
@@ -202,7 +202,7 @@ if (!isset($_SESSION["mikhmon"])) {
     include_once('./hotspot/users.php');
   }
 
-// hotspot users filter by comment
+
   elseif ($hotspot == "users" && $comm != "") {
     $_SESSION['ubc'] = $comm;
     $_SESSION['hua'] = "";
@@ -211,7 +211,7 @@ if (!isset($_SESSION["mikhmon"])) {
     include_once('./hotspot/users.php');
   }
 
-// hotspot by profile
+
   elseif ($hotspot == "users-by-profile") {
     $_SESSION['ubp'] = "";
     $_SESSION['hua'] = "";
@@ -219,34 +219,34 @@ if (!isset($_SESSION["mikhmon"])) {
     $_SESSION['vcr'] = "active";
     include_once('./hotspot/userbyprofile.php');
   }
-// export hotspot users
+
   elseif ($hotspot == "export-users") {
     include_once('./hotspot/exportusers.php');
   }
 
-// quick print
+
   elseif ($hotspot == "quick-print") {
     include_once('./hotspot/quickprint.php');
   }
 
-// quick print
+
 elseif ($hotspot == "list-quick-print") {
   include_once('./hotspot/listquickprint.php');
-}  
+}
 
-// add hotspot user
+
   elseif ($hotspotuser == "add") {
     include_once('./hotspot/adduser.php');
     echo $disable_sci;
   }
 
-// add hotspot user
+
   elseif ($hotspotuser == "generate") {
     include_once('./hotspot/generateuser.php');
     echo $disable_sci;
   }
 
-// hotspot users filter by name
+
   elseif (substr($hotspotuser, 0, 1) == "*") {
     $_SESSION['ubn'] = $hotspotuser;
     $_SESSION['hua'] = "";
@@ -256,59 +256,59 @@ elseif ($hotspot == "list-quick-print") {
     include_once('./hotspot/userbyname.php');
   }
 
-// remove hotspot user
+
   elseif ($removehotspotuser != "" || $removehotspotusers != "") {
     echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
 
     include_once('./process/removehotspotuser.php');
   }
 
-// remove hotspot user by comment
+
   elseif ($removehotspotuserbycomment != "") {
     echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
 
     include_once('./process/removehotspotuserbycomment.php');
   }
 
-// remove expired hotspot user
+
 elseif ($removeexpiredhotspotuser != "") {
   echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
 
   include_once('./process/removeexpiredhotspotuser.php');
-}  
+}
 
-// reset hotspot user
+
   elseif ($resethotspotuser != "") {
     echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
 
     include_once('./process/resethotspotuser.php');
   }
 
-// enable hotspot user
+
   elseif ($enablehotspotuser != "") {
     echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
 
     include_once('./process/enablehotspotuser.php');
   }
 
-// disable hotspot user
+
   elseif ($disablehotspotuser != "") {
     echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
 
     include_once('./process/disablehotspotuser.php');
   }
 
-// user profile
+
   elseif ($hotspot == "user-profiles") {
     include_once('./hotspot/userprofile.php');
   }
 
-// add  user profile
+
   elseif ($userprofile == "add") {
     include_once('./hotspot/adduserprofile.php');
   }
 
-// User profile by name
+
   elseif (substr($userprofile, 0, 1) == "*") {
     include_once('./hotspot/userprofilebyname.php');
   } elseif ($userprofile != "") {
@@ -316,14 +316,14 @@ elseif ($removeexpiredhotspotuser != "") {
   }
 
 
-// remove user profile
+
   elseif ($removeuserprofile != "") {
     echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
 
     include_once('./process/removeuserprofile.php');
   }
 
-// hotspot active
+
   elseif ($hotspot == "active") {
     $_SESSION['ubp'] = "";
     $_SESSION['hua'] = "hotspotactive";
@@ -331,54 +331,54 @@ elseif ($removeexpiredhotspotuser != "") {
     include_once('./hotspot/hotspotactive.php');
   }
 
-// dhcp leases
+
   elseif ($hotspot == "dhcp-leases") {
     include_once('./dhcp/dhcpleases.php');
   }
 
-// traffic monitor
+
   elseif ($minterface == "traffic-monitor") {
   include_once('./traffic/trafficmonitor.php');
 }
 
-// hotspot hosts
+
   elseif ($hotspot == "hosts" || $hotspot == "hostp" || $hotspot == "hosta") {
     include_once('./hotspot/hosts.php');
   }
 
-// hotspot bindings
+
   elseif ($hotspot == "binding") {
     include_once('./hotspot/binding.php');
   }
 
-// template editor
+
   elseif ($hotspot == "template-editor") {
     include_once('./settings/vouchereditor.php');
   }
 
-// upload logo
+
   elseif ($hotspot == "uplogo") {
     include_once('./settings/uplogo.php');
   }
 
-// hotspot Cookies
+
   elseif ($hotspot == "cookies") {
     include_once('./hotspot/cookies.php');
   }
 
-// remove hotspot Cookies
+
   elseif ($removecookie != "") {
     echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
 
     include_once('./process/removecookie.php');
   }
 
-// hotspot Ip Bindings
+
   elseif ($hotspot == "ipbinding") {
     include_once('./hotspot/ipbinding.php');
   }
 
-// remove enable disable ipbinding
+
   elseif ($removeipbinding != "" || $enableipbinding != "" || $disableipbinding != "") {
     echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
 
@@ -386,14 +386,14 @@ elseif ($removeexpiredhotspotuser != "") {
   }
 
 
-// remove user active
+
   elseif ($removeuseractive != "") {
     echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
 
     include_once('./process/removeuseractive.php');
   }
 
-// remove host
+
   elseif ($removehost != "") {
     echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
 
@@ -401,51 +401,51 @@ elseif ($removeexpiredhotspotuser != "") {
   }
 
 
-// makebinding
+
   elseif ($macbinding != "") {
     echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
 
     include_once('./process/makebinding.php');
   }
 
-// selling
+
   elseif ($report == "selling") {
     include_once('./report/selling.php');
   }
 
-// selling
+
 elseif ($report == "resume-report") {
   include_once('./report/resumereport.php');
 }
 
-// selling
+
 elseif ($report == "export") {
   include_once('./report/export.php');
 }
 
-// selling
+
   elseif ($removereport != "") {
     echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
 
     include_once('./process/removereport.php');
   }
 
-// ppp secret
+
   elseif ($ppp == "secrets") {
     include_once('./ppp/pppsecrets.php');
   }
 
-// ppp addsecret
+
   elseif ($ppp == "addsecret") {
     include_once('./ppp/addsecret.php');
   }
 
-// ppp secretbyname
+
   elseif ($secretbyname != "") {
     include_once('./ppp/secretbyname.php');
   }
 
-// remove enable disable secret
+
   elseif ($removesecr != "" || $enablesecr != "" || $disablesecr != "") {
     echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
 
@@ -453,44 +453,44 @@ elseif ($report == "export") {
   }
 
 
-// ppp profile
+
   elseif ($ppp == "profiles") {
     include_once('./ppp/pppprofile.php');
   }
 
-// add ppp profile
+
   elseif ($ppp == "add-profile") {
     include_once('./ppp/addpppprofile.php');
   }
 
-// add ppp profile
+
 elseif ($ppp == "edit-profile") {
   include_once('./ppp/profilebyname.php');
 }
-// remove enable disable profile
+
   elseif ($removepprofile != "") {
     echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
 
     include_once('./process/removepprofile.php');
   }
 
-// ppp active connection
+
   elseif ($ppp == "active") {
     include_once('./ppp/pppactive.php');
   }
 
-// remove ppp active connection
+
   elseif ($removepactive != "") {
     echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
 
     include_once('./process/removepactive.php');
   }
 
-// sys scheduler
+
   elseif ($sys == "scheduler") {
     include_once('./system/scheduler.php');
   }
-// remove enable disable scheduler
+
   elseif ($removesch != "" || $enablesch != "" || $disablesch != "") {
     echo "<b class='cl-w'><i class='fa fa-circle-o-notch fa-spin' style='font-size:24px'></i> Processing...</b>";
 
@@ -510,14 +510,14 @@ elseif ($ppp == "edit-profile") {
 <?php
 if ($hotspot == "dashboard" || substr(end(explode("/", $url)), 0, 8) == "?session") {
   echo '<script>
-    $("#r_3").load("./dashboard/aload.php?session=' . $session . '&load=logs #r_3");  
+    $("#r_3").load("./dashboard/aload.php?session=' . $session . '&load=logs #r_3");
     var interval1 = "' . ($areload * 1000) . '";
     var dashboard = setInterval(function() {
-      
-    $("#r_1").load("./dashboard/aload.php?session=' . $session . '&load=sysresource #r_1"); 
-    $("#r_2").load("./dashboard/aload.php?session=' . $session . '&load=hotspot #r_2"); 
-    $("#r_3").load("./dashboard/aload.php?session=' . $session . '&load=logs #r_3"); 
-    
+
+    $("#r_1").load("./dashboard/aload.php?session=' . $session . '&load=sysresource #r_1");
+    $("#r_2").load("./dashboard/aload.php?session=' . $session . '&load=hotspot #r_2");
+    $("#r_3").load("./dashboard/aload.php?session=' . $session . '&load=logs #r_3");
+
   }, interval1);
 
 ';
@@ -525,17 +525,17 @@ if ($livereport == "enable" || $livereport == "") {
   if($_SESSION[$session.'sdate'] != $_SESSION[$session.'idhr']){
     $_SESSION[$session.'totalHr'] = "0";
     echo '$("#r_4").load("./report/livereport.php?session=' . $session . ' #r_4");';
-    }else if ($_SESSION[$session.'sdate'] == $_SESSION[$session.'idhr']){  
+    }else if ($_SESSION[$session.'sdate'] == $_SESSION[$session.'idhr']){
     }else{
       echo '$("#r_4").load("./report/livereport.php?session=' . $session . ' #r_4");';
     }
   echo  '
     var interval2 = "65432";
     var livereport = setInterval(function() {
-    $("#r_4").load("./report/livereport.php?session=' . $session . ' #r_4"); 
+    $("#r_4").load("./report/livereport.php?session=' . $session . ' #r_4");
   }, interval2);
  ';}
-  echo ' 
+  echo '
   function cancelPage(){
     window.stop();
     clearInterval(dashboard);';
@@ -605,4 +605,3 @@ $(document).ready(function(){
 ?>
 </body>
 </html>
-

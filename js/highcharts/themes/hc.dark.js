@@ -1,7 +1,7 @@
-/**
- * Mikhmon Dark theme for Highcharts JS
- * @author Laksamadi Guko
- */
+
+
+
+
 
 Highcharts.theme = {
 	colors: ["#20a8d8", "#f86c6b"],
@@ -96,5 +96,5 @@ Highcharts.theme = {
 
 };
 
-// Apply the theme
+
 var highchartsOptions = Highcharts.setOptions(Highcharts.theme);

@@ -1,22 +1,22 @@
 <?php
-/*
- *  Copyright (C) 2018 Laksamadi Guko.
- *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 session_start();
-// hide all error
+
 error_reporting(0);
 if (!isset($_SESSION["mikhmon"])) {
 	header("Location:../admin.php?id=login");
@@ -58,7 +58,7 @@ if (!isset($_SESSION["mikhmon"])) {
 <div class="col-12">
 <div class="card">
 <div class="card-header align-middle">
-	<h3><i class="fa fa-laptop"></i> Hosts  
+	<h3><i class="fa fa-laptop"></i> Hosts
 		<?php
 	if ($counthosts < 2) {
 		echo "$counthosts item";
@@ -72,12 +72,12 @@ if (!isset($_SESSION["mikhmon"])) {
 		 | &nbsp;&nbsp;<i onclick="location.reload();" class="fa fa-refresh pointer " title="Reload data"></i>
     </h3>
 </div>
-<!-- /.card-header -->
-<div class="card-body">	
+
+<div class="card-body">
   <div class="w-6">
     <input id="filterTable" type="text" class="form-control" placeholder="Search..">
   </div>
-<div class="overflow box-bordered mr-t-10" style="max-height: 75vh"> 	   
+<div class="overflow box-bordered mr-t-10" style="max-height: 75vh">
 <table id="dataTable" class="table table-bordered table-hover text-nowrap">
   <thead>
   <tr>
@@ -89,7 +89,7 @@ if (!isset($_SESSION["mikhmon"])) {
     <th class="pointer" title="Click to sort"><i class="fa fa-sort"></i> Server</th>
 	<th class="pointer" title="Click to sort"><i class="fa fa-sort"></i> <?= $_comment ?></th>
   </thead>
-  <tbody>  	
+  <tbody>
 <?php
 for ($i = 0; $i < $TotalReg; $i++) {
 	$hosts = $gethosts[$i];

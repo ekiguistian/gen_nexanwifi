@@ -1,35 +1,35 @@
 <?php
-/*****************************
- *
- * RouterOS PHP API class v1.6
- * Author: Denis Basta
- * Contributors:
- *    Nick Barnes
- *    Ben Menking (ben [at] infotechsc [dot] com)
- *    Jeremy Jefferson (http://jeremyj.com)
- *    Cristian Deluxe (djcristiandeluxe [at] gmail [dot] com)
- *    Mikhail Moskalev (mmv.rus [at] gmail [dot] com)
- *
- * http://www.mikrotik.com
- * http://wiki.mikrotik.com/wiki/API_PHP_class
- *
- ******************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class RouterosAPI
 {
-    var $debug     = false; //  Show debug information
-    var $connected = false; //  Connection state
-    var $port      = 8728;  //  Port to connect to (default 8729 for ssl)
-    var $ssl       = false; //  Connect using SSL (must enable api-ssl in IP/Services)
-    var $timeout   = 3;     //  Connection attempt timeout and data read timeout
-    var $attempts  = 5;     //  Connection attempt count
-    var $delay     = 3;     //  Delay between connection attempts in seconds
+    var $debug     = false;
+    var $connected = false;
+    var $port      = 8728;
+    var $ssl       = false;
+    var $timeout   = 3;
+    var $attempts  = 5;
+    var $delay     = 3;
 
-    var $socket;            //  Variable for storing socket resource
-    var $error_no;          //  Variable for storing connection error number, if any
-    var $error_str;         //  Variable for storing connection error text, if any
+    var $socket;
+    var $error_no;
+    var $error_str;
 
-    /* Check, can be var used in foreach  */
+
     public function isIterable($var)
     {
         return $var !== null
@@ -40,13 +40,13 @@ class RouterosAPI
                 );
     }
 
-    /**
-     * Print text for debug purposes
-     *
-     * @param string      $text       Text to print
-     *
-     * @return void
-     */
+
+
+
+
+
+
+
     public function debug($text)
     {
         if ($this->debug) {
@@ -55,13 +55,13 @@ class RouterosAPI
     }
 
 
-    /**
-     *
-     *
-     * @param string        $length
-     *
-     * @return void
-     */
+
+
+
+
+
+
+
     public function encodeLength($length)
     {
         if ($length < 0x80) {
@@ -83,15 +83,15 @@ class RouterosAPI
     }
 
 
-    /**
-     * Login to RouterOS
-     *
-     * @param string      $ip         Hostname (IP or domain) of the RouterOS server
-     * @param string      $login      The RouterOS username
-     * @param string      $password   The RouterOS password
-     *
-     * @return boolean                If we are connected or not
-     */
+
+
+
+
+
+
+
+
+
     public function connect($ip, $login, $password)
     {
         for ($ATTEMPT = 1; $ATTEMPT <= $this->attempts; $ATTEMPT++) {
@@ -109,11 +109,11 @@ class RouterosAPI
                 if (isset($RESPONSE[0])) {
                     if ($RESPONSE[0] == '!done') {
                         if (!isset($RESPONSE[1])) {
-                            // Login method post-v6.43
+
                             $this->connected = true;
                             break;
                         } else {
-                            // Login method pre-v6.43
+
                             $MATCHES = array();
                             if (preg_match_all('/[^=]+/i', $RESPONSE[1], $MATCHES)) {
                                 if ($MATCHES[0][0] == 'ret' && strlen($MATCHES[0][1]) == 32) {
@@ -144,14 +144,14 @@ class RouterosAPI
     }
 
 
-    /**
-     * Disconnect from RouterOS
-     *
-     * @return void
-     */
+
+
+
+
+
     public function disconnect()
     {
-        // let's make sure this socket is still valid.  it may have been closed by something else
+
         if( is_resource($this->socket) ) {
             fclose($this->socket);
         }
@@ -160,13 +160,13 @@ class RouterosAPI
     }
 
 
-    /**
-     * Parse response from Router OS
-     *
-     * @param array       $response   Response data
-     *
-     * @return array                  Array with parsed data
-     */
+
+
+
+
+
+
+
     public function parseResponse($response)
     {
         if (is_array($response)) {
@@ -202,13 +202,13 @@ class RouterosAPI
     }
 
 
-    /**
-     * Parse response from Router OS
-     *
-     * @param array       $response   Response data
-     *
-     * @return array                  Array with parsed data
-     */
+
+
+
+
+
+
+
     public function parseResponse4Smarty($response)
     {
         if (is_array($response)) {
@@ -245,13 +245,13 @@ class RouterosAPI
     }
 
 
-    /**
-     * Change "-" and "/" from array key to "_"
-     *
-     * @param array       $array      Input array
-     *
-     * @return array                  Array with changed key names
-     */
+
+
+
+
+
+
+
     public function arrayChangeKeyName(&$array)
     {
         if (is_array($array)) {
@@ -271,27 +271,27 @@ class RouterosAPI
     }
 
 
-    /**
-     * Read data from Router OS
-     *
-     * @param boolean     $parse      Parse the data? default: true
-     *
-     * @return array                  Array with parsed or unparsed data
-     */
+
+
+
+
+
+
+
     public function read($parse = true)
     {
         $RESPONSE     = array();
         $receiveddone = false;
         while (true) {
-            // Read the first byte of input which gives us some or all of the length
-            // of the remaining reply.
+
+
             $BYTE   = ord(fread($this->socket, 1));
             $LENGTH = 0;
-            // If the first bit is set then we need to remove the first four bits, shift left 8
-            // and then read another byte in.
-            // We repeat this for the second and third bits.
-            // If the fourth bit is set, we need to remove anything left in the first byte
-            // and then read in yet another byte.
+
+
+
+
+
             if ($BYTE & 128) {
                 if (($BYTE & 192) == 128) {
                     $LENGTH = (($BYTE & 63) << 8) + ord(fread($this->socket, 1));
@@ -318,7 +318,7 @@ class RouterosAPI
 
             $_ = "";
 
-            // If we have got more characters to read, read them in.
+
             if ($LENGTH > 0) {
                 $_      = "";
                 $retlen = 0;
@@ -331,7 +331,7 @@ class RouterosAPI
                 $this->debug('>>> [' . $retlen . '/' . $LENGTH . '] bytes read.');
             }
 
-            // If we get a !done, make a note of it.
+
             if ($_ == "!done") {
                 $receiveddone = true;
             }
@@ -354,17 +354,17 @@ class RouterosAPI
     }
 
 
-    /**
-     * Write (send) data to Router OS
-     *
-     * @param string      $command    A string with the command to send
-     * @param mixed       $param2     If we set an integer, the command will send this data as a "tag"
-     *                                If we set it to boolean true, the funcion will send the comand and finish
-     *                                If we set it to boolean false, the funcion will send the comand and wait for next command
-     *                                Default: true
-     *
-     * @return boolean                Return false if no command especified
-     */
+
+
+
+
+
+
+
+
+
+
+
     public function write($command, $param2 = true)
     {
         if ($command) {
@@ -389,14 +389,14 @@ class RouterosAPI
     }
 
 
-    /**
-     * Write (send) data to Router OS
-     *
-     * @param string      $com        A string with the command to send
-     * @param array       $arr        An array with arguments or queries
-     *
-     * @return array                  Array with parsed
-     */
+
+
+
+
+
+
+
+
     public function comm($com, $arr = array())
     {
         $count = count($arr);
@@ -424,18 +424,18 @@ class RouterosAPI
         return $this->read();
     }
 
-    /**
-     * Standard destructor
-     *
-     * @return void
-     */
+
+
+
+
+
     public function __destruct()
     {
         $this->disconnect();
     }
 }
 
-// encrypt decript
+
 
 function encrypt($string, $key=128) {
 	$result = '';
@@ -459,8 +459,8 @@ function decrypt($string, $key=128) {
 	return $result;
 }
 
-// Reformat date time MikroTik
-// by Laksamadi Guko
+
+
 
 function formatInterval($dtm){
 $val_convert = $dtm;
@@ -483,23 +483,23 @@ if(substr($dtm, 1,1) == "d" || substr($dtm, 2,1) == "d"){
     $dtm = explode("w",$dtm)[1];
 }
 
-// secs
+
 if(strlen($dtm) == "2" && substr($dtm, -1) == "s"){
     $format = $day." 00:00:0".substr($dtm, 0,-1);
 }elseif(strlen($dtm) == "3" && substr($dtm, -1) == "s"){
     $format = $day." 00:00:".substr($dtm, 0,-1);
-//minutes
+
 }elseif(strlen($dtm) == "2" && substr($dtm, -1) == "m"){
     $format = $day." 00:0".substr($dtm, 0,-1).":00";
 }elseif(strlen($dtm) == "3" && substr($dtm, -1) == "m"){
     $format = $day." 00:".substr($dtm, 0,-1).":00";
-//hours
+
 }elseif(strlen($dtm) == "2" && substr($dtm, -1) == "h"){
     $format = $day." 0".substr($dtm, 0,-1).":00:00";
 }elseif(strlen($dtm) == "3" && substr($dtm, -1) == "h"){
     $format = $day." ".substr($dtm, 0,-1).":00:00";
- 
-//minutes -secs
+
+
 }elseif(strlen($dtm) == "4" && substr($dtm, -1) == "s" && substr($dtm,1,-2) == "m"){
     $format = $day." "."00:0".substr($dtm, 0,1).":0".substr($dtm, 2,-1);
 }elseif(strlen($dtm) == "5" && substr($dtm, -1) == "s" && substr($dtm,1,-3) == "m"){
@@ -509,7 +509,7 @@ if(strlen($dtm) == "2" && substr($dtm, -1) == "s"){
 }elseif(strlen($dtm) == "6" && substr($dtm, -1) == "s" && substr($dtm,2,-3) == "m"){
     $format = $day." "."00:".substr($dtm, 0,2).":".substr($dtm, 3,-1);
 
-//hours -secs
+
 }elseif(strlen($dtm) == "4" && substr($dtm, -1) == "s" && substr($dtm,1,-2) == "h"){
     $format = $day." 0".substr($dtm, 0,1).":00:0".substr($dtm, 2,-1);
 }elseif(strlen($dtm) == "5" && substr($dtm, -1) == "s" && substr($dtm,1,-3) == "h"){
@@ -519,7 +519,7 @@ if(strlen($dtm) == "2" && substr($dtm, -1) == "s"){
 }elseif(strlen($dtm) == "6" && substr($dtm, -1) == "s" && substr($dtm,2,-3) == "h"){
     $format = $day." ".substr($dtm, 0,2).":00:".substr($dtm, 3,-1);
 
-//hours -secs
+
 }elseif(strlen($dtm) == "4" && substr($dtm, -1) == "m" && substr($dtm,1,-2) == "h"){
     $format = $day." 0".substr($dtm, 0,1).":0".substr($dtm, 2,-1).":00";
 }elseif(strlen($dtm) == "5" && substr($dtm, -1) == "m" && substr($dtm,1,-3) == "h"){
@@ -529,7 +529,7 @@ if(strlen($dtm) == "2" && substr($dtm, -1) == "s"){
 }elseif(strlen($dtm) == "6" && substr($dtm, -1) == "m" && substr($dtm,2,-3) == "h"){
     $format = $day." ".substr($dtm, 0,2).":".substr($dtm, 3,-1).":00";
 
-//hours minutes secs
+
 }elseif(strlen($dtm) == "6" && substr($dtm, -1) == "s" && substr($dtm,3,-2) == "m" && substr($dtm,1,-4) == "h"){
     $format = $day." 0".substr($dtm, 0,1).":0".substr($dtm, 2,-3).":0".substr($dtm, 4,-1);
 }elseif(strlen($dtm) == "7" && substr($dtm, -1) == "s" && substr($dtm,3,-3) == "m" && substr($dtm,1,-5) == "h"){

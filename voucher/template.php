@@ -1,6 +1,6 @@
-						
+
 <?php
-// Copy Paste ke template editor [Settings -> Template Editor].
+
 
 if(substr($validity,-1) == "d"){
   $validity = "   <br>MASA AKTIF : ".substr($validity,0,-1)." HARI";
@@ -15,17 +15,17 @@ if(substr($timelimit,-1) == "d" & strlen($timelimit) >3){
   $timelimit = "Durasi:".substr($timelimit,0,-1)."Jam";
 }else if(substr($timelimit,-1) == "w"){
   $timelimit = "Durasi:".(substr($timelimit,0,-1)*7)." HARI";
-}	            	            
+}
 
-/* 
-Sesuikan harga dan warna masing-masing.
-warna bisa dilihat di https://material.io/guidelines/style/color.html#color-color-palette
-variable $color
-background-color:<?php echo $color;?>; -webkit-print-color-adjust: exact;
-ditambahkan ke style di tag html yang ingin dikasi warna. untuk template ini warna ditaruh di keterangan harga <-- Price --> line 81
-*/
 
-if($getsprice == "3000"){ $color = "#666";} // jika harga == "1000" maka warna = "#01579B"
+
+
+
+
+
+
+
+if($getsprice == "3000"){ $color = "#666";}
 elseif($getsprice == "1000"){ $color = "#FF1493";}
 elseif($getsprice == "2000"){ $color = "#8B008B";}
 elseif($getsprice == "3000"){ $color = "#FF00FF";}
@@ -34,14 +34,14 @@ elseif($getsprice == "10000"){ $color = "#E65100";}
 elseif($getsprice == "15000"){ $color = "#228B22";}
 elseif($getsprice == "20000"){ $color = "#008000";}
 elseif($getsprice == "30000"){ $color = "#FF00FF";}
-elseif($getsprice == "60000"){ $color = "#E60C00";} 
-elseif($getsprice == "70000"){ $color = "#FF0000";} 
-// ini yang dicopy untuk menambah warna berdarsarkan harga, kemudian paste di atas baris // else color
+elseif($getsprice == "60000"){ $color = "#E60C00";}
+elseif($getsprice == "70000"){ $color = "#FF0000";}
 
-// else color
+
+
 else{ $color = "#BA68C8";}
-?>  
- <!--mks-mulai-->	   
+?>
+
 <style>
 .qrcode{
 		height:60px;
@@ -59,14 +59,14 @@ else{ $color = "#BA68C8";}
 <div style="position:absolute;top:0;display:inline;margin-top:-100px;width: 0; height: 0; border-top: 230px solid transparent;border-left: 50px solid transparent;border-right:140px solid #DCDCDC; "></div>
 </div>
 <img style="margin:5px 0 0 5px;" width="85" height="20" src="<?php echo $logo;?>" alt="logo">
-</td>	
+</td>
 <td style="width:115px">
 <div style="float:right;margin-top:-6px;margin-right:0px;width:5%;text-align:right;font-size:7px;">
 </div>
 <div style="text-align:right;font-weight:bold;font-family:Tahoma;font-size:20px;padding-left:17px;color:<?php echo $color ?>">
 <small style="font-size:10px;margin-left:-17px;position:absolute;"><?= explode(" ",$price)[0]?></small><?= explode(" ",$price)[1]?>
-</div>	
-</td>		
+</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -89,13 +89,13 @@ else{ $color = "#BA68C8";}
 Hubungkan ke "NEXAN WIFI"
 Masukan kode voucher
 </div>
-</td>	
+</td>
 <td style="width:100px;text-align:right;">
 <div style="clear:both;padding:0 2.5px;font-size:7px;font-weight:bold;color:#000000">
 <?php echo $validity;?><br> <?php echo $timelimit;?> <br><?php echo $datalimit;?>
 </div>
 <div style="float:right;padding:1px;text-align:right;width:70%;margin:0 5px -20px 0;"><?= $qrcode ?></div>
-</td>		
+</td>
 </tr>
 <tr>
 <td style="background:<?php echo $color ?>;color:#666;padding:0px;" valign="top" colspan="2">
@@ -110,5 +110,3 @@ CS: <b>0851 2132 2446</b>
 </tr>
 </tbody>
 </table>
- <!--mks-akhir-->
-	        	        

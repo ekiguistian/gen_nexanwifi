@@ -1,22 +1,22 @@
 <?php
-/*
- *  Copyright (C) 2018 Laksamadi Guko.
- *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 session_start();
-// hide all error
+
 error_reporting(0);
 if (!isset($_SESSION["mikhmon"])) {
 	header("Location:../admin.php?id=login");
@@ -35,7 +35,7 @@ if (!isset($_SESSION["mikhmon"])) {
 	$_SESSION['idbl'] = $idbl;
 	$remdata = ($_POST['remdata']);
 	$prefix = $_GET['prefix'];
-	
+
 
 	$gettimezone = $API->comm("/system/clock/print");
 	$timezone = $gettimezone[0]['time-zone-name'];
@@ -119,7 +119,7 @@ if (!isset($_SESSION["mikhmon"])) {
 		$shf = "hidden";
 		$shd = "inline-block";
 	}
-	
+
 }
 ?>
 		<script>
@@ -141,11 +141,11 @@ if (!isset($_SESSION["mikhmon"])) {
 			  // Click download link
 			  downloadLink.click();
 			  }
-			  
+
 			  function exportTableToCSV(filename) {
 			    var csv = [];
 			    var rows = document.querySelectorAll("#dataTable tr");
-			    
+
 			   for (var i = 0; i < rows.length; i++) {
 			      var row = [], cols = rows[i].querySelectorAll("td, th");
 			   for (var j = 0; j < cols.length; j++)
@@ -185,23 +185,23 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   }
   return s.join(dec);
 }
-        
+
 		window.onload=function() {
           var sum = 0;
           var dataTable = document.getElementById("selling");
-          
+
           // use querySelector to find all second table cells
           var cells = document.querySelectorAll("td + td + td + td + td + td");
           for (var i = 0; i < cells.length; i++)
           sum+=parseFloat(cells[i].firstChild.data);
-          
+
           var th = document.getElementById('total');
     <?php if ($currency == in_array($currency, $cekindo['indo'])) {
       echo 'th.innerHTML = "'.$currency.' " + number_format(th.innerHTML + (sum),"","",".") ;';
 		} else {
 			echo 'th.innerHTML = "'.$currency.' " + number_format(th.innerHTML + (sum),2,".",",") ;';
 		} ?>
-		
+
 		var tables = document.getElementsByTagName('tbody');
     var table = tables[tables.length -1];
     var rows = table.rows;
@@ -300,7 +300,7 @@ $(document).ready(function(){
 											echo "<option>" . $year1 . "</option>";
 										}
 											echo "<option>" . date("Y") . "</option>";
-										
+
 										for ($Y = 2018; $Y <= date("Y"); $Y++) {
 											if ($Y == date("Y")) {
 											} else {
@@ -314,7 +314,7 @@ $(document).ready(function(){
 				<div style="padding:3.5px;"  class="group-item group-item-r text-center pointer" onclick="filterR(); loader();"><i class="fa fa-search"></i> Filter</div>
 			</div>
 			<script type="text/javascript">
-				
+
 				function filterR(){
 					var D = document.getElementById('D').value;
 					var M = document.getElementById('M').value;
@@ -326,7 +326,7 @@ $(document).ready(function(){
 					}else if(D === ""){
 						window.location='./?report=selling&idbl='+M+Y+'&prefix='+X+'&session=<?= $session; ?>';
 					}
-					
+
 				}
 			</script>
 		</div>
@@ -411,13 +411,13 @@ $(document).ready(function(){
 					echo $price;
 					echo "</td>";
 					echo "</tr>";
-				
+
 				$dataresume .= $getname[0].$getname[3];
 				$totalresume += $getname[3];
 				$_SESSION['dataresume'] = $dataresume;
 				$_SESSION['totalresume'] = $TotalReg.'/'.$totalresume;
 				}
-					
+
 			}
 
 			?>
@@ -428,7 +428,7 @@ $(document).ready(function(){
 </div>
 </div>
 
-<!-- Modal -->
+
 <div class="modal-window" id="remdata" aria-hidden="true">
   <div>
   	<header><h1><?= $_confirm ?></h1></header>

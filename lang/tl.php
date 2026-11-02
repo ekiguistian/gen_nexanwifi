@@ -1,8 +1,8 @@
 <?php
-$langid="tl"; 
+$langid="tl";
 $langname = "Tagalog";
 $language = "Language";
-//translator REGO KIER MONGOSERA
+
 $_about = "Tungkol";
 $_action = "Gawa";
 $_add = "mag add";
@@ -153,7 +153,7 @@ $_yes = "Oo";
 
 
 
-//details
+
 $_format_time_limit = '
     Format '.$_time_limit.'.<br>
     [wdhm] Example : 30d = 30'.$_days.', 12h = 12'.$_hours.', 4w3d = 31'.$_days.'.
@@ -172,7 +172,7 @@ Options : Remove, Notice, Remove & Record, Notice & Record.
 <li>Record: Sagipin ang presyon ng bawat logib ng gumagamit. Para ma kwentahin ang lahat ng benta ng mga gumagamit ng hotspot.</li>
 </ul>
 </p>
-        
+
         <p>'.$_lock_user.' : Isang device lang pwede gamitin ng gumagamit.</p>
 ';
 

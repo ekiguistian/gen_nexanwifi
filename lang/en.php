@@ -1,5 +1,5 @@
 <?php
-$langid="en"; 
+$langid="en";
 $langname = "English";
 $language = "Language";
 
@@ -153,7 +153,7 @@ $_yes = "Yes";
 
 
 
-//details
+
 $_format_time_limit = '
     Format '.$_time_limit.'.<br>
     [wdhm] Example : 30d = 30'.$_days.', 12h = 12'.$_hours.', 4w3d = 31'.$_days.'.
@@ -172,7 +172,7 @@ Options : Remove, Notice, Remove & Record, Notice & Record.
 <li>Record: Save the price of each user login. To calculate total sales of hotspot users.</li>
 </ul>
 </p>
-        
+
         <p>'.$_lock_user.' : Username can only be used on 1 device only.</p>
 ';
 

@@ -1,41 +1,41 @@
 <?php
-/*
- *  Copyright (C) 2018 Laksamadi Guko.
- *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 session_start();
-// hide all error
+
 error_reporting(0);
 if (!isset($_SESSION["mikhmon"])) {
   header("Location:../admin.php?id=login");
 } else {
-// load session MikroTik
+
   $session = $_GET['session'];
-// set  timezone
+
 date_default_timezone_set($_SESSION['timezone']);
 
-// lang
+
 include('../include/lang.php');
 include('../lang/'.$langid.'.php');
 
 
-// load config
+
   include('../include/config.php');
   include('../include/readcfg.php');
 
-// routeros api
+
   include_once('../lib/routeros_api.class.php');
   include_once('../lib/formatbytesbites.php');
   $API = new RouterosAPI();
@@ -48,7 +48,7 @@ include('../lang/'.$langid.'.php');
   } else {
     $logh = "350px";
     $lreport = "style='display:block;'";
-// get selling report
+
     $thisD = date("d");
     $thisM = strtolower(date("M"));
     $thisY = date("Y");
@@ -64,28 +64,28 @@ include('../lang/'.$langid.'.php');
 
     $_SESSION[$session.'idhr'] = $idhr;
 
-   /* $getSRHr = $API->comm("/system/script/print", array(
-      "?source" => "$idhr",
-    ));
-    $TotalRHr = count($getSRHr);
-    $_SESSION[$session.'totalHr'] = $TotalRHr;*/
+
+
+
+
+
     $getSRBl = $API->comm("/system/script/print", array(
       "?owner" => "$idbl",
     ));
     $TotalRBl = count($getSRBl);
     $_SESSION[$session.'totalBl'] = $TotalRBl;
-/*
-    for ($i = 0; $i < $TotalRHr; $i++) {
 
-      $tHr += explode("-|-", $getSRHr[$i]['name'])[3];
 
-    }*/
+
+
+
+
     foreach($getSRBl as $row){
-    
+
       if((explode("-|-", $row['name'])[0]) == $idhr){
          $tHr += explode("-|-", $row['name'])[3];
-         $TotalRHr += count((array)$row['source']); /*Modif line add (array) by github https://github.com/MasKawer*/
- 
+         $TotalRHr += count((array)$row['source']);
+
        }
        $tBl += explode("-|-", $row['name'])[3];
 
@@ -95,7 +95,7 @@ include('../lang/'.$langid.'.php');
       }else{
         $_SESSION[$session.'totalHr'] = $TotalRHr;
       }
-      
+
     }
   }
 }
@@ -108,7 +108,7 @@ include('../lang/'.$langid.'.php');
                     <div class="box-group-area">
                       <span >
                         <div id="reloadLreport">
-                        <?php 
+                        <?php
                           if ($currency == in_array($currency, $cekindo['indo'])) {
                             $dincome = number_format((float)$tHr, 0, ",", ".");
                             $mincome = number_format((float)$tBl, 0, ",", ".");
@@ -130,4 +130,3 @@ include('../lang/'.$langid.'.php');
               </div>
             </div>
             </div>
-            

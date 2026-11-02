@@ -1,8 +1,8 @@
 <?php
-$langid="es"; 
+$langid="es";
 $langname = "Spanish";
 $language = "Language";
-// Translator Fernando Sepulveda
+
 $_about = "Acerca";
 $_action = "Acción";
 $_add = "Anadir Usuarios";
@@ -153,7 +153,7 @@ $_yes = "Si";
 
 
 
-//details
+
 $_format_time_limit = '
     Formato '.$_time_limit.'.<br>
     [wdhm] Ejemplo : 30d = 30'.$_days.', 12h = 12'.$_hours.', 4w3d = 31'.$_days.'.
@@ -172,7 +172,7 @@ Opciones : Eliminar, aviso, Eliminar y registrar, Aviso y registrar.
 <li>Registrar: Guardar el precio de cada usuario de inicio de sesión. Para calcular las ventas totales de usuarios de hotspot..</li>
 </ul>
 </p>
-        
+
         <p>'.$_lock_user.' : El nombre de usuario solo se puede utilizar en 1 dispositivo.</p>
 ';
 

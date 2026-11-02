@@ -1,22 +1,22 @@
 <?php
-/*
- *  Copyright (C) 2018 Laksamadi Guko.
- *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 session_start();
-// hide all error
+
 error_reporting(0);
 
 ini_set('max_execution_time', 300);
@@ -24,7 +24,7 @@ ini_set('max_execution_time', 300);
 if (!isset($_SESSION["mikhmon"])) {
 	header("Location:../admin.php?id=login");
 } else {
-// time zone
+
 date_default_timezone_set($_SESSION['timezone']);
 
 	$genprof = $_GET['genprof'];
@@ -61,7 +61,7 @@ date_default_timezone_set($_SESSION['timezone']);
 	$srvlist = $API->comm("/ip/hotspot/print");
 
 	if (isset($_POST['qty'])) {
-		
+
 		$qty = ($_POST['qty']);
 		$server = ($_POST['server']);
 		$user = ($_POST['user']);
@@ -270,7 +270,7 @@ date_default_timezone_set($_SESSION['timezone']);
 		$udlimit = formatBytes($udlimit, 2);
 	}
 	$ulock = $genuser1[6];
-	//$urlprint = "$umode-$ucode-$udate-$ucommt";
+
 	$urlprint = explode("|", decrypt($genu))[0];
 	if ($currency == in_array($currency, $cekindo['indo'])) {
 		$uprice = $currency . " " . number_format((float)$uprice, 0, ",", ".");
@@ -284,11 +284,11 @@ date_default_timezone_set($_SESSION['timezone']);
 }
 ?>
 <div class="row">
-	
+
 <div class="col-8">
 <div class="card box-bordered">
 	<div class="card-header">
-	<h3><i class="fa fa-user-plus"></i> <?= $_generate_user ?> <small id="loader" style="display: none;" ><i><i class='fa fa-circle-o-notch fa-spin'></i> <?= $_processing ?> </i></small></h3> 
+	<h3><i class="fa fa-user-plus"></i> <?= $_generate_user ?> <small id="loader" style="display: none;" ><i><i class='fa fa-circle-o-notch fa-spin'></i> <?= $_processing ?> </i></small></h3>
 	</div>
 	<div class="card-body">
 <form autocomplete="off" method="post" action="">
@@ -302,7 +302,7 @@ date_default_timezone_set($_SESSION['timezone']);
 	}
 
 	?>
-	<a class="btn bg-pink" title="Open User List by Profile 
+	<a class="btn bg-pink" title="Open User List by Profile
 <?php if ($_SESSION['ubp'] == "") {
 	echo "all";
 } else {
@@ -476,6 +476,6 @@ date_default_timezone_set($_SESSION['timezone']);
 function GetVP(){
   var prof = document.getElementById('uprof').value;
   $("#GetValidPrice").load("./process/getvalidprice.php?name="+prof+"&session=<?= $session; ?> #getdata");
-} 
+}
 </script>
 </div>

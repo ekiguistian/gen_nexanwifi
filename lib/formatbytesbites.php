@@ -1,5 +1,5 @@
 <?php
-// function  format bytes
+
 function formatBytes($size, $decimals = 0){
 $unit = array(
 '0' => 'Byte',
@@ -20,7 +20,7 @@ $size = $size/1024;
 return round($size, $decimals).' '.$unit[$i];
 }
 
-// function  format bytes2
+
 function formatBytes2($size, $decimals = 0){
 $unit = array(
 '0' => 'Byte',
@@ -42,7 +42,7 @@ return round($size, $decimals).''.$unit[$i];
 }
 
 
-// function  format bites
+
 function formatBites($size, $decimals = 0){
 $unit = array(
 '0' => 'bps',

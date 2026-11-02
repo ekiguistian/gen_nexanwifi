@@ -1,22 +1,22 @@
 <?php
-/*
- *  Copyright (C) 2018 Laksamadi Guko.
- *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
 
-// hide all error
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 error_reporting(0);
 
 if (!isset($_SESSION["mikhmon"])) {
@@ -53,8 +53,8 @@ if (!isset($_SESSION["mikhmon"])) {
     }
     $siface = ($_POST['iface']);
     $sinfolp = implode(unpack("H*", $_POST['infolp']));
-    //$sinfolp = encrypt($_POST['infolp']);
-    //$sinfolp = ($_POST['infolp']);
+
+
     $sidleto = ($_POST['idleto']);
 
     $sesname = (preg_replace('/\s+/', '-', $_POST['sessname']));
@@ -93,10 +93,10 @@ if (!isset($_SESSION["mikhmon"])) {
     } else {
     x.type = 'password';
   }}
-  
+
 </script>
 
-<form autocomplete="off" method="post" action="" name="settings">  
+<form autocomplete="off" method="post" action="" name="settings">
 <div class="row">
 	<div class="col-12">
   		<div class="card" >
@@ -157,23 +157,23 @@ if (!isset($_SESSION["mikhmon"])) {
 								<div class="input-group-4">
 									<input class="group-item group-item-md" type="submit" style="cursor: pointer;" name="save" value="Save"/>
 								</div>
-								<div class="input-group-4">	
+								<div class="input-group-4">
                   <span class="connect pointer group-item group-item-md pd-2p5 text-center align-middle" id="<?= $session; ?>&c=settings">Connect</span>
 								</div>
-								<div class="input-group-3">	
+								<div class="input-group-3">
                   <span class="pointer group-item group-item-md pd-2p5 text-center align-middle" id="ping_test">Ping</span>
               	</div>
-              	<div class="input-group-1">	
+              	<div class="input-group-1">
 									<div style="cursor: pointer;" class="group-item group-item-r pd-2p5 text-center" onclick="location.reload();" title="Reload Data"><i class="fa fa-refresh"></i></div>
 								</div>
-            		</div>	
+            		</div>
     					</td>
     				</tr>
 				</table>
 			</div>
-    </div>  	
+    </div>
     <div id="ping">
-    </div>	
+    </div>
 	</div>
 </div>
 <div class="col-6">
@@ -182,7 +182,7 @@ if (!isset($_SESSION["mikhmon"])) {
         <div class="card-header">
             <h3 class="card-title">Mikhmon Data</h3>
         </div>
-    <div class="card-body">    
+    <div class="card-body">
 	<table class="table table-sm">
 	<tr>
 	<td class="align-middle"><?= $_hotspot_name ?>  </td><td><input class="form-control" type="text" size="15" maxlength="50" name="hotspotname" title="Hotspot Name" value="<?= $hotspotname; ?>" required="1"/></td>
@@ -193,7 +193,7 @@ if (!isset($_SESSION["mikhmon"])) {
 	<tr>
 	<td class="align-middle"><?= $_currency ?>  </td><td><input class="form-control" type="text" size="3" maxlength="4" name="currency" title="currency" value="<?= $currency; ?>" required="1"/></td>
 	</tr>
-	<tr> 
+	<tr>
 	<td class="align-middle"><?= $_auto_reload ?></td><td>
 	<div class="input-group">
 		<div class="input-group-10">
@@ -240,7 +240,7 @@ if (!isset($_SESSION["mikhmon"])) {
 		  </select>
     </td>
   </tr>
-  <?php 
+  <?php
 } ?>
 </table>
 </div>
@@ -255,8 +255,3 @@ var _0x1d39=["\x68\x6F\x73\x74\x6E\x61\x6D\x65","\x6C\x6F\x63\x61\x74\x69\x6F\x6
 
 
 </script>
-
-
-
-
-

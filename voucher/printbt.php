@@ -1,8 +1,8 @@
 <?php date_default_timezone_set($_SESSION['timezone']); ?>
 <script>
 function sendToQuickPrinterChrome(){
- 
-    var commandsToPrint = 
+
+    var commandsToPrint =
 
                         "<center><big><bold><?= $hotspotname ?>\n" +
                         //"<line0>\n" +

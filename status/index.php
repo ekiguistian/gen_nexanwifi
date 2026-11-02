@@ -1,22 +1,22 @@
 <?php
-/*
- *  Copyright (C) 2018 Laksamadi Guko.
- *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
 
-// hide all error
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 error_reporting(0);
 ob_start("ob_gzhandler");
 
@@ -25,7 +25,7 @@ require('../lib/routeros_api.class.php');
 include('../lib/formatbytesbites.php');
 include('../include/config.php');
 
-// theme  
+
 include('../include/theme.php');
 
 $iphost = explode('!', $data[$session][1])[1];
@@ -57,9 +57,9 @@ if ($currency == in_array($currency, $cekindo['indo'])) {
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="pragma" content="no-cache" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
-<!-- Font Awesome -->
+
 <link rel="stylesheet" type="text/css" href="../css/font-awesome/css/font-awesome.min.css" />
-<!-- Mikhmon UI -->
+
 <link rel="stylesheet" href="../css/mikhmon-ui.<?= $theme; ?>.min.css">
 <link rel="icon" href="../img/favicon.png" />
 <script>
@@ -118,7 +118,7 @@ if (isset($_POST['nama'])) {
 
 
 	}
-  
+
 	if ($user == "" || (substr($exp,3,1) != "/" && substr($exp,6,1) != "/")) {
 		echo "<h3 class='text-center'>User <i style='color:#008CCA;'>$name</i> $title[9]</h3>";
 	} elseif ($limitup == "1s" || $uptime == $limitup || $getbyteo == $limitbyte) {

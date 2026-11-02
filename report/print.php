@@ -1,39 +1,39 @@
 <?php
-/*
- *  Copyright (C) 2018 Laksamadi Guko.
- *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 session_start();
-// hide all error
+
 error_reporting(0);
 if (!isset($_SESSION["mikhmon"])) {
 	header("Location:../admin.php?id=login");
 } else {
-  
-  // load session MikroTik
+
+
   $session = $_GET['session'];
 
-  // lang
+
   include('../include/lang.php');
   include('../lang/'.$langid.'.php');
 
-  // load config
+
   include('../include/config.php');
   include('../include/readcfg.php');
 
-  // routeros api
+
   include_once('../lib/routeros_api.class.php');
   include_once('../lib/formatbytesbites.php');
   $API = new RouterosAPI();
@@ -55,7 +55,7 @@ if (!isset($_SESSION["mikhmon"])) {
 	$fcomment = $_GET['comment'];
 	$range = $_GET['range'];
 	if(!empty($range)){$trange = "[".$range."]";}
-	
+
 	$pcomment = substr($prefix, 0,2);
 	if($pcomment == "!!"){
 		$fcomment = explode("!!",$prefix)[1];
@@ -145,7 +145,7 @@ if (!isset($_SESSION["mikhmon"])) {
 		$shf = "hidden";
 		$shd = "inline-block";
 	}
-	
+
 }
 ?>
 <!DOCTYPE html>
@@ -155,28 +155,28 @@ if (!isset($_SESSION["mikhmon"])) {
 		<meta charset="utf-8">
 		<meta http-equiv="cache-control" content="private" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<!-- Tell the browser to be responsive to screen width -->
+
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<style>
-	/*table*/
+
   .table {
     width: 100%;
     background-color: #FFFFFF;
     border-collapse: collapse !important;
   }
-  
+
   .table td,
   .table th {
     padding: 5px;
   }
-  
+
   .table td,
   th,
   a {
     color: #000;
     text-decoration: none;
   }
-  
+
   .table-bordered th,
   .table-bordered td {
    border: 1px solid #000 !important;
@@ -196,12 +196,12 @@ if (!isset($_SESSION["mikhmon"])) {
    td    { page-break-inside:avoid; page-break-after:auto }
    thead { display:table-header-group }
    tfoot { display:table-footer-group }
-	}	 
+	}
 	h3 {
 		margin:0px;
-	} 
+	}
 		</style>
-		
+
 	</head>
 	<body>
 		<div class="wrapper">
@@ -237,20 +237,20 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 		window.onload=function() {
           var sum = 0;
           var dataTable = document.getElementById("selling");
-          
+
           // use querySelector to find all second table cells
           var cells = document.querySelectorAll("td + td + td + td + td + td");
           for (var i = 0; i < cells.length; i++)
           sum+=parseFloat(cells[i].firstChild.data);
-          
+
           var th = document.getElementById('total');
-          
+
     <?php if ($currency == in_array($currency, $cekindo['indo'])) {
       echo 'th.innerHTML = "'.$currency.' " + number_format(th.innerHTML + (sum),"","",".") ;';
 		} else {
 			echo 'th.innerHTML = "'.$currency.' " + number_format(th.innerHTML + (sum),2,".",",") ;';
 		} ?>
-		
+
 		var tables = document.getElementsByTagName('tbody');
     var table = tables[tables.length -1];
     var rows = table.rows;
@@ -259,10 +259,10 @@ function number_format(number, decimals, dec_point, thousands_sep) {
         td.appendChild(document.createTextNode(i + 1));
         rows[i].insertBefore(td, rows[i].firstChild);
     }
-        
+
     window.print();
         }
-        
+
 
 		</script>
 
@@ -284,7 +284,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 					<th ><?= $_comment ?></th>
 					<th style="text-align:right;"> <?= $_price; ?></th>
 				</tr>
-				
+
 				<tbody id="tbody">
 				<?php
 			if ($fcomment != "" || $pcomment == "!!") {
@@ -294,7 +294,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 					if (strpos($getname[8], $fcomment) !== false){
 						echo "<tr>";
 						echo "<td>";
-						
+
 						$tgl = $getname[0];
 						echo $tgl;
 						echo "</td>";
@@ -327,7 +327,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 					if (substr($getname[2], 0, strlen($prefix)) == $prefix) {
 						echo "<tr>";
 						echo "<td>";
-						
+
 						$tgl = $getname[0];
 						echo $tgl;
 						echo "</td>";
@@ -359,14 +359,14 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 			  $y = explode('-',$range)[1];
 
         $range = range($x, $y);
-        
+
 				for ($i = 0; $i < $TotalReg; $i++) {
 					$getname = explode("-|-", $getData[$i]['name']);
 					$day = substr($getname[0],4,2); if(substr($day,0,1) == "0"){$day = substr($day,-1);}else{$day=$day;}
 					if (in_array($day, $range)) {
 						echo "<tr>";
 						echo "<td>";
-						
+
 						$tgl = $getname[0];
 						echo $tgl;
 						echo "</td>";
@@ -398,7 +398,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 					$getname = explode("-|-", $getData[$i]['name']);
 					echo "<tr>";
 					echo "<td>";
-					
+
 					$tgl = $getname[0];
 					echo $tgl;
 					echo "</td>";
@@ -423,13 +423,13 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 					echo $price;
 					echo "</td>";
 					echo "</tr>";
-				
+
 				$dataresume .= $getname[0].$getname[3];
 				$totalresume += $getname[3];
 				$_SESSION['dataresume'] = $dataresume;
 				$_SESSION['totalresume'] = $TotalReg.'/'.$totalresume;
 				}
-					
+
 			}
 			?>
 			</tbody>

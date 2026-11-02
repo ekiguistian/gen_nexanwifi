@@ -1,5 +1,5 @@
 <?php
-$langid="tr"; 
+$langid="tr";
 $langname = "Türkçe";
 $language = "Dil";
 
@@ -153,7 +153,7 @@ $_yes = "Evet";
 
 
 
-//details
+
 $_format_time_limit = '
     Format '.$_time_limit.'.<br>
     [wdhm] Örnek : 30d = 30'.$_days.', 12h = 12'.$_hours.', 4w3d = 31'.$_days.'.
@@ -172,7 +172,7 @@ Seçenekler: Kaldır, Bildir, Kaldır ve Kaydet, Bildir ve Kaydet.
 <li>Kayıt: Her kullanıcı girişinin fiyatını kaydedin. Hotspot kullanıcılarının toplam satışlarını hesaplamak için.</li>
 </ul>
 </p>
-        
+
         <p>'.$_lock_user.' : Kullanıcı adı yalnızca 1 cihazda kullanılabilir.</p>
 ';
 
@@ -206,6 +206,3 @@ $_delete_report = '
 		        <li>Öncelikle '.$_user_log.' İndirmeniz tavsiye edilir </li>
 		      </ul>
 ';
-
-//Translated by: ihsan Keskin
-//For Contact: https://ihsankeskin.org

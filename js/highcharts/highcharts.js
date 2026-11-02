@@ -1,10 +1,10 @@
-/*
- Highcharts JS v8.2.0 (2020-08-20)
 
- (c) 2009-2018 Torstein Honsi
 
- License: www.highcharts.com/license
-*/
+
+
+
+
+
 (function(T,O){"object"===typeof module&&module.exports?(O["default"]=O,module.exports=T.document?O(T):O):"function"===typeof define&&define.amd?define("highcharts/highcharts",function(){return O(T)}):(T.Highcharts&&T.Highcharts.error(16,!0),T.Highcharts=O(T))})("undefined"!==typeof window?window:this,function(T){function O(f,a,S,y){f.hasOwnProperty(a)||(f[a]=y.apply(null,S))}var n={};O(n,"Core/Globals.js",[],function(){var f="undefined"!==typeof T?T:"undefined"!==typeof window?window:{},a=f.document,
 S=f.navigator&&f.navigator.userAgent||"",y=a&&a.createElementNS&&!!a.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect,n=/(edge|msie|trident)/i.test(S)&&!f.opera,G=-1!==S.indexOf("Firefox"),C=-1!==S.indexOf("Chrome"),J=G&&4>parseInt(S.split("Firefox/")[1],10);return{product:"Highcharts",version:"8.2.0",deg2rad:2*Math.PI/360,doc:a,hasBidiBug:J,hasTouch:!!f.TouchEvent,isMS:n,isWebKit:-1!==S.indexOf("AppleWebKit"),isFirefox:G,isChrome:C,isSafari:!C&&-1!==S.indexOf("Safari"),isTouchDevice:/(Mobile|Android|Windows Phone)/.test(S),
 SVG_NS:"http://www.w3.org/2000/svg",chartCount:0,seriesTypes:{},symbolSizes:{},svg:y,win:f,marginNames:["plotTop","marginRight","marginBottom","plotLeft"],noop:function(){},charts:[],dateFormats:{}}});O(n,"Core/Utilities.js",[n["Core/Globals.js"]],function(f){function a(b,c,e,d){var z=c?"Highcharts error":"Highcharts warning";32===b&&(b=z+": Deprecated member");var w=I(b),g=w?z+" #"+b+": www.highcharts.com/errors/"+b+"/":b.toString();z=function(){if(c)throw Error(g);v.console&&-1===a.messages.indexOf(g)&&
@@ -535,4 +535,3 @@ g].attr(m),g+=1;l||[d.group,d.markerGroup,d.dataLabelsGroup,d.labelBySeries].for
 (a._id=v());this.matchResponsiveRule(a,y)},this);f=G.apply(0,y.map(function(a){return n(q.rules,function(f){return f._id===a}).chartOptions}));f.isResponsiveOptions=!0;y=y.toString()||void 0;y!==(p&&p.ruleIds)&&(p&&this.update(p.undoOptions,a,!0),y?(p=this.currentOptions(f),p.isResponsiveOptions=!0,this.currentResponsive={ruleIds:y,mergedOptions:f,undoOptions:p},this.update(f,a,!0)):this.currentResponsive=void 0)};f.prototype.matchResponsiveRule=function(a,f){var n=a.condition;(n.callback||function(){return this.chartWidth<=
 J(n.maxWidth,Number.MAX_VALUE)&&this.chartHeight<=J(n.maxHeight,Number.MAX_VALUE)&&this.chartWidth>=J(n.minWidth,0)&&this.chartHeight>=J(n.minHeight,0)}).call(this)&&f.push(a._id)};f.prototype.currentOptions=function(a){function f(a,q,v,u){var m;C(a,function(a,l){if(!u&&-1<n.collectionsWithUpdate.indexOf(l))for(a=H(a),v[l]=[],m=0;m<Math.max(a.length,q[l].length);m++)q[l][m]&&(void 0===a[m]?v[l][m]=q[l][m]:(v[l][m]={},f(a[m],q[l][m],v[l][m],u+1)));else D(a)?(v[l]=y(a)?[]:{},f(a,q[l]||{},v[l],u+1)):
 v[l]="undefined"===typeof q[l]?null:q[l]})}var n=this,v={};f(a,this.options,v,0);return v}});O(n,"masters/highcharts.src.js",[n["Core/Globals.js"]],function(f){return f});n["masters/highcharts.src.js"]._modules=n;return n["masters/highcharts.src.js"]});
-//# sourceMappingURL=highcharts.js.map

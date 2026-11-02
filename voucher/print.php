@@ -1,20 +1,20 @@
 <?php
-/*
- *  Copyright (C) 2018 Laksamadi Guko.
- *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 session_start();
 
 error_reporting(0);
@@ -24,13 +24,13 @@ ob_start("ob_gzhandler");
 if (!isset($_SESSION["mikhmon"])) {
   header("Location:../admin.php?id=login");
 } else {
-  
+
   date_default_timezone_set($_SESSION['timezone']);
-  
-// load session MikroTik
+
+
   $session = $_GET['session'];
 
-// load config
+
   include('../include/config.php');
   include('../include/readcfg.php');
 
@@ -46,7 +46,7 @@ if (!isset($_SESSION["mikhmon"])) {
   $API->debug = false;
   $API->connect($iphost, $userhost, decrypt($passwdhost));
 
-  
+
 
   if ($userp != "") {
     $usermode = explode('-', $userp)[0];
@@ -76,8 +76,8 @@ if (!isset($_SESSION["mikhmon"])) {
   $getprice = explode(",", $ponlogin)[2];
   $getsprice = explode(",", $ponlogin)[4];
 
- 
-  
+
+
     if($getsprice == "0" && $getprice != "0"){
       if ($currency == in_array($currency, $cekindo['indo'])) {
         $price = $currency . " " . number_format((float)$getprice, 0, ",", ".");
@@ -94,8 +94,8 @@ if (!isset($_SESSION["mikhmon"])) {
       $price = "";
     }
 
-    
-  
+
+
 
   $logo = "../img/logo-" . $session . ".png";
   if (file_exists($logo)) {
@@ -172,7 +172,7 @@ table.voucher {
   } else {
     $datalimit = formatBytes($getdatalimit, 2);
   }
-  
+
   $urilogin = "http://$dnsname/login?username=$username&password=$password";
   $qrcode = "
 	<canvas class='qrcode' id='".$uid."'></canvas>
@@ -187,7 +187,7 @@ table.voucher {
       })();
     </script>
 	";
- 
+
   $num = $i + 1;
   ?>
 <?php
@@ -201,9 +201,9 @@ if ($userp != "") {
   }
 }
 ?>
-<?php 
+<?php
 } ?>
 
-	
+
 </body>
 </html>

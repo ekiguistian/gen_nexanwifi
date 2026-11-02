@@ -1,4 +1,4 @@
-	            	             	            	              	            	              	            	              	            	              
+
 <table class="voucher" style=" width: 160px;">
   <tbody>
     <tr>
@@ -11,7 +11,7 @@
     <tr style="color: black; font-size: 11px;">
       <td>
         <table style="width:100%;">
-<!-- Username = Password    -->
+
 <?php if($usermode == "vc"){?>
         <tr>
           <td >Kode Voucher</td>
@@ -22,8 +22,8 @@
         <tr>
           <td colspan="2" style="border: 1px solid black; font-weight:bold;"><?php echo $validity;?> <?php echo $timelimit;?> <?php echo $datalimit;?> <?php echo $price;?></td>
         </tr>
-<!-- /  -->
-<!-- Username & Password  -->
+
+
 <?php }elseif($usermode == "up"){?>
           <tr>
           <td style="width: 50%">Username</td>
@@ -37,7 +37,7 @@
           <td colspan="2" style="border: 1px solid black; font-weight:bold;"><?php echo $validity;?> <?php echo $timelimit;?> <?php echo $datalimit;?> <?php echo $price;?></td>
         </tr>
 <?php }?>
-<!-- /  -->
+
         </table>
       </td>
     </tr>
@@ -46,4 +46,4 @@
       </td>
     </tr>
   </tbody>
-</table>	            	          	           	          	           	          
+</table>
